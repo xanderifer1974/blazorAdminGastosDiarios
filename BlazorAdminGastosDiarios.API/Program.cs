@@ -1,3 +1,5 @@
+using BlazorAdminGastosDiarios.Data;
+
 namespace BlazorAdminGastosDiarios.API
 {
     public class Program
@@ -5,6 +7,13 @@ namespace BlazorAdminGastosDiarios.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+           //Conexão com o banco de dados
+            string connectionString = builder.Configuration.GetConnectionString("SqlConnection");
+
+            var SqlConnectionConfiguration = new SqlConfiguration(connectionString);
+            
+            builder.Services.AddSingleton(SqlConnectionConfiguration);
 
             // Add services to the container.
 
