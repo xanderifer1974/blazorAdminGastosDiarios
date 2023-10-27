@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAdminGastosDiarios.UI", "BlazorAdminGastosDiarios.UI\BlazorAdminGastosDiarios.UI.csproj", "{5C0A21E5-A561-4623-9931-52A973F0812E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C0A21E5-A561-4623-9931-52A973F0812E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C0A21E5-A561-4623-9931-52A973F0812E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C0A21E5-A561-4623-9931-52A973F0812E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C0A21E5-A561-4623-9931-52A973F0812E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F714BA21-C47D-4FBB-8392-894B29776097}
+	EndGlobalSection
+EndGlobal
