@@ -1,5 +1,6 @@
 ﻿using BlazorAdminGastosDiarios.Data.Repositories.Interfaces;
 using BlazorAdminGastosDiarios.Model;
+using Dapper;
 using System.Data.SqlClient;
 
 namespace BlazorAdminGastosDiarios.Data.Repositories
@@ -16,8 +17,7 @@ namespace BlazorAdminGastosDiarios.Data.Repositories
         protected SqlConnection dbConection()
         {
             return new SqlConnection(_connectionString.ConnectionString);
-
-            //Parei na aula 21 - 08:16
+           
 
         }
         public Task<bool> AtualizarCategoria(Categoria categoria)
@@ -32,17 +32,27 @@ namespace BlazorAdminGastosDiarios.Data.Repositories
 
         public Task<bool> InserirCategoria(Categoria categoria)
         {
+            //Continuar deste método
+            // Parei na aula 21 - Minuto 17:14
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Categoria>> ListarTodasCategorias()
+        public async Task<IEnumerable<Categoria>> ListarTodasCategorias()
         {
-            throw new NotImplementedException();
+           var db = dbConection();
+           var sql = @"SELECT IdCategoria,NomeCategoria
+                        FROM Categoria";
+           return await db.QueryAsync<Categoria>(sql, new {});
+
         }
 
-        public Task<Categoria> ObterCategoria(int id)
+        public async Task<Categoria?> ObterCategoria(int id)
         {
-            throw new NotImplementedException();
+            var db = dbConection();
+            var sql = @"SELECT IdCategoria,NomeCategoria
+                        FROM Categoria WHERE IdCategoria = @Id ";
+            var categoria = await db.QueryFirstOrDefaultAsync<Categoria>(sql, new { Id = id });
+            return categoria;
         }
     }
 }
