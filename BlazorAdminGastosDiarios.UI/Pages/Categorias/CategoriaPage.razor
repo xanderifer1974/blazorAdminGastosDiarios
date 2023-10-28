@@ -1,0 +1,28 @@
+﻿@page "/categorias"
+
+<h3>Categorias</h3>
+
+@if(Categorias == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var categoria in Categorias)
+            {
+               <tr>
+                    <td>@categoria.NomeCategoria</td>
+               </tr>
+
+            }
+
+        </tbody>
+    </table>
+}

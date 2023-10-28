@@ -1,0 +1,23 @@
+﻿@page "/categoria-detalhe"
+
+<h3>DetalhesCategoria</h3>
+
+<EditForm Model="@Categoria">
+    <div class="row">
+        <div class="col-md-8">            
+            <div class="form-group">
+                <label for="NomeCategoria" class="control-label">Categoria Nome</label>
+                <InputText id="NomeCategoria" class="form-control" @bind-Value="Categoria.NomeCategoria" />                
+            </div>       
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <br />
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Salvar" />
+                <input type="button" class="btn btn-outline-danger"  value="Cancelar" />
+            </div>
+        </div>
+    </div>
+</EditForm>
