@@ -2,12 +2,14 @@
 
 <h3>DetalhesCategoria</h3>
 
-<EditForm Model="@Categoria">
+<EditForm Model="@Categoria" OnValidSubmit="SalvarCategoria">
+    <DataAnnotationsValidator />   
     <div class="row">
         <div class="col-md-8">            
             <div class="form-group">
                 <label for="NomeCategoria" class="control-label">Categoria Nome</label>
-                <InputText id="NomeCategoria" class="form-control" @bind-Value="Categoria.NomeCategoria" />                
+                <InputText id="NomeCategoria" class="form-control" @bind-Value="Categoria.NomeCategoria" />
+                <ValidationMessage For="@(() => Categoria.NomeCategoria)" />
             </div>       
         </div>
     </div>

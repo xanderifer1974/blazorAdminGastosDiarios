@@ -10,5 +10,10 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Categorias
         {
            Categoria = new Categoria();
         }
+
+        protected void SalvarCategoria()
+        {
+
+        }
     }
 }
