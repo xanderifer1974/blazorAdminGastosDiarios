@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\BlazorAdminGastosDiarios.Data\BlazorAdminGastosDiarios.Data.csproj" />
     <ProjectReference Include="..\BlazorAdminGastosDiarios.Model\BlazorAdminGastosDiarios.Model.csproj" />
   </ItemGroup>

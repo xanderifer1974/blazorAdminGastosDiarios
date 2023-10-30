@@ -1,4 +1,6 @@
 using BlazorAdminGastosDiarios.Data;
+using BlazorAdminGastosDiarios.Data.Repositories.Interfaces;
+using BlazorAdminGastosDiarios.Data.Repositories;
 
 namespace BlazorAdminGastosDiarios.API
 {
@@ -16,6 +18,8 @@ namespace BlazorAdminGastosDiarios.API
             builder.Services.AddSingleton(SqlConnectionConfiguration);
 
             // Add services to the container.
+
+            builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

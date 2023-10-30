@@ -58,6 +58,7 @@ namespace BlazorAdminGastosDiarios.Data.Repositories
            var db = dbConection();
            var sql = @"SELECT IdCategoria,NomeCategoria
                         FROM Categoria";
+           db.Open();
            return await db.QueryAsync<Categoria>(sql, new {});
 
         }
