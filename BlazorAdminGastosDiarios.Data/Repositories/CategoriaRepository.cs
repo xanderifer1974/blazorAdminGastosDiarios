@@ -20,9 +20,15 @@ namespace BlazorAdminGastosDiarios.Data.Repositories
            
 
         }
-        public Task<bool> AtualizarCategoria(Categoria categoria)
+        public async Task<bool> AtualizarCategoria(Categoria categoria)
         {
-            throw new NotImplementedException();
+            var db = dbConection();
+            var sql = @" UPDATE Categoria
+                        SET NomeCategoria = @NomeCategoria 
+                        WHERE IdCategoria = @IdCategoria) ";
+            var resultado = await db.ExecuteAsync(sql, new { categoria.NomeCategoria, categoria.IdCategoria });
+
+            return resultado > 0;
         }
 
         public Task<bool> DeletarCategoria(int id)
@@ -30,11 +36,15 @@ namespace BlazorAdminGastosDiarios.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<bool> InserirCategoria(Categoria categoria)
+        public async Task<bool> InserirCategoria(Categoria categoria)
         {
-            //Continuar deste método
-            // Parei na aula 21 - Minuto 17:14
-            throw new NotImplementedException();
+            var db = dbConection();
+            var sql = @" INSERT into Categoria (NomeCategoria)
+                         VALUES (@NomeCategoria)";
+
+            var resultado = await db.ExecuteAsync(sql, new { categoria.NomeCategoria,categoria.IdCategoria });
+
+            return resultado > 0;
         }
 
         public async Task<IEnumerable<Categoria>> ListarTodasCategorias()
