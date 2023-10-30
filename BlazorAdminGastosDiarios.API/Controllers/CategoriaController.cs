@@ -20,7 +20,31 @@ namespace BlazorAdminGastosDiarios.API.Controllers
         {
             var categorias = await _categoriaRepository.ListarTodasCategorias();
             return Ok(categorias);
-        }  
+        }
+
+        [HttpGet("id")]
+        public async Task<ActionResult<Categoria>> ObterCategoria(int id)
+        {
+            var categoria = await _categoriaRepository.ObterCategoria(id);
+            return Ok(categoria);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> InserirCategoria([FromBody] Categoria categoria)
+        {
+            if(categoria == null)
+                return BadRequest();
+
+            if(categoria.NomeCategoria == string.Empty)
+                return BadRequest();
+
+            if(!ModelState.IsValid)
+                return BadRequest();
+
+            var inserido = await _categoriaRepository.InserirCategoria(categoria).ConfigureAwait(false);
+
+            return Created("inserido", inserido);
+        }
 
     }
 
