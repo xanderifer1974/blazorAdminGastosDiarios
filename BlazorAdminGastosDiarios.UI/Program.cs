@@ -1,3 +1,6 @@
+using BlazorAdminGastosDiarios.UI.Interfaces;
+using BlazorAdminGastosDiarios.UI.Services;
+
 namespace BlazorAdminGastosDiarios.UI
 {
     public class Program
@@ -8,7 +11,10 @@ namespace BlazorAdminGastosDiarios.UI
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-            builder.Services.AddServerSideBlazor();           
+            builder.Services.AddServerSideBlazor();
+            builder.Services.AddHttpClient<ICategoriaService, CategoriaService>(
+
+                client => { client.BaseAddress = new Uri("http://localhost:44347"); });
 
             var app = builder.Build();
 
