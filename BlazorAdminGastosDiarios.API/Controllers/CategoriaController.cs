@@ -10,7 +10,7 @@ namespace BlazorAdminGastosDiarios.API.Controllers
     {
         private readonly ICategoriaRepository _categoriaRepository;
 
-        public  CategoriaController(ICategoriaRepository categoriaRepositorio)
+        public CategoriaController(ICategoriaRepository categoriaRepositorio)
         {
             _categoriaRepository = categoriaRepositorio;
         }
@@ -22,7 +22,7 @@ namespace BlazorAdminGastosDiarios.API.Controllers
             return Ok(categorias);
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Categoria>> ObterCategoria(int id)
         {
             var categoria = await _categoriaRepository.ObterCategoria(id);
@@ -32,16 +32,16 @@ namespace BlazorAdminGastosDiarios.API.Controllers
         [HttpPost]
         public async Task<IActionResult> InserirCategoria([FromBody] Categoria categoria)
         {
-            if(categoria == null)
+            if (categoria == null)
                 return BadRequest();
 
-            if(categoria.NomeCategoria.Trim() == string.Empty)
+            if (categoria.NomeCategoria.Trim() == string.Empty)
             {
                 ModelState.AddModelError("NomeCategoria", "O nome da categoria deve estar preenchido");
             }
-               
 
-            if(!ModelState.IsValid)
+
+            if (!ModelState.IsValid)
                 return BadRequest();
 
             var inserido = await _categoriaRepository.InserirCategoria(categoria).ConfigureAwait(false);
@@ -69,7 +69,7 @@ namespace BlazorAdminGastosDiarios.API.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeletarCategoria(int id)
         {
             if(id ==0)
