@@ -31,9 +31,15 @@ namespace BlazorAdminGastosDiarios.Data.Repositories
             return resultado > 0;
         }
 
-        public Task<bool> DeletarCategoria(int id)
+        public async Task<bool> DeletarCategoria(int id)
         {
-            throw new NotImplementedException();
+            var db = dbConection();
+            var sql = @" DELETE Categoria
+                         WHERE IdCategoria = @Id ";
+
+            var resultado = await db.ExecuteAsync(sql, new { Id = id }); ;
+
+            return resultado > 0;
         }
 
         public async Task<bool> InserirCategoria(Categoria categoria)
