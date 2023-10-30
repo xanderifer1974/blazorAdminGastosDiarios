@@ -35,8 +35,11 @@ namespace BlazorAdminGastosDiarios.API.Controllers
             if(categoria == null)
                 return BadRequest();
 
-            if(categoria.NomeCategoria == string.Empty)
-                return BadRequest();
+            if(categoria.NomeCategoria.Trim() == string.Empty)
+            {
+                ModelState.AddModelError("NomeCategoria", "O nome da categoria deve estar preenchido");
+            }
+               
 
             if(!ModelState.IsValid)
                 return BadRequest();
@@ -46,6 +49,25 @@ namespace BlazorAdminGastosDiarios.API.Controllers
             return Created("inserido", inserido);
         }
 
+        [HttpPut]
+        public async Task<IActionResult> AtualizarCategoria([FromBody] Categoria categoria)
+        {
+            if (categoria == null)
+                return BadRequest();
+
+            if (categoria.NomeCategoria.Trim() == string.Empty)
+            {
+                ModelState.AddModelError("NomeCategoria", "O nome da categoria deve estar preenchido");
+            }
+
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var atualizado = await _categoriaRepository.AtualizarCategoria(categoria).ConfigureAwait(false);
+
+            return NoContent();
+        }
     }
 
     

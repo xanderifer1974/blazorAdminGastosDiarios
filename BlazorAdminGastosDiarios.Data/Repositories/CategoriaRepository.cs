@@ -25,7 +25,7 @@ namespace BlazorAdminGastosDiarios.Data.Repositories
             var db = dbConection();
             var sql = @" UPDATE Categoria
                         SET NomeCategoria = @NomeCategoria 
-                        WHERE IdCategoria = @IdCategoria) ";
+                        WHERE IdCategoria = @IdCategoria";
             var resultado = await db.ExecuteAsync(sql, new { categoria.NomeCategoria, categoria.IdCategoria });
 
             return resultado > 0;
