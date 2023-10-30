@@ -68,6 +68,25 @@ namespace BlazorAdminGastosDiarios.API.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeletarCategoria(int id)
+        {
+            if(id ==0)
+                return BadRequest();
+
+            var categoria = await _categoriaRepository.ObterCategoria(id).ConfigureAwait(false);
+
+            if(categoria != null)
+            {
+                await _categoriaRepository.DeletarCategoria(id).ConfigureAwait(false);
+                return NoContent();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 
     
