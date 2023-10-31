@@ -16,11 +16,11 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Categorias
            Categoria = new Categoria();
         }
 
-        protected void SalvarCategoria()
+        protected async Task SalvarCategoria()
         {
             if(Categoria != null)
             {
-                CategoriaService.SalvarCategoria(Categoria);
+               await CategoriaService.SalvarCategoria(Categoria);
             }
             else
             {
