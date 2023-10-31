@@ -14,7 +14,7 @@ namespace BlazorAdminGastosDiarios.UI
             builder.Services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });
             builder.Services.AddHttpClient<ICategoriaService, CategoriaService>(
 
-                client => { client.BaseAddress = new Uri("http://localhost:44347"); });
+                client => { client.BaseAddress = new Uri("https://localhost:7177"); });
 
             var app = builder.Build();
 

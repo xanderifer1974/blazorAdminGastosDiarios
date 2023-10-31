@@ -1,10 +1,15 @@
 ﻿using BlazorAdminGastosDiarios.Model;
+using BlazorAdminGastosDiarios.UI.Interfaces;
+using Microsoft.AspNetCore.Components;
 
 namespace BlazorAdminGastosDiarios.UI.Pages.Categorias
 {
     public partial class DetalhesCategoria
     {
-        public Categoria Categoria { get; set; }
+        public Categoria? Categoria { get; set; }
+
+        [Inject]
+        public ICategoriaService CategoriaService { get; set; }
 
         protected override void OnInitialized()
         {
@@ -13,7 +18,15 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Categorias
 
         protected void SalvarCategoria()
         {
-
+            if(Categoria != null)
+            {
+                CategoriaService.SalvarCategoria(Categoria);
+            }
+            else
+            {
+                //Implementar Modal
+            }
+            
         }
     }
 }

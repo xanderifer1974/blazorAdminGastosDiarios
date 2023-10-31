@@ -8,7 +8,7 @@ namespace BlazorAdminGastosDiarios.UI.Services
     public class CategoriaService : ICategoriaService
     {
         private readonly HttpClient _httpClient;
-        private readonly string _baseAddress = "api/Categoria";
+        private readonly string _baseAddress = "/api/Categoria";
 
         public CategoriaService(HttpClient httpClient)
         {
