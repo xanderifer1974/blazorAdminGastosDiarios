@@ -5,11 +5,11 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAdminGastosDiarios.UI", "BlazorAdminGastosDiarios.UI\BlazorAdminGastosDiarios.UI.csproj", "{5C0A21E5-A561-4623-9931-52A973F0812E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAdminGastosDiarios.Model", "BlazorAdminGastosDiarios.Model\BlazorAdminGastosDiarios.Model.csproj", "{0B190B4B-E2A4-4A41-8455-10068EE2B619}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAdminGastosDiarios.Model", "BlazorAdminGastosDiarios.Model\BlazorAdminGastosDiarios.Model.csproj", "{0B190B4B-E2A4-4A41-8455-10068EE2B619}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAdminGastosDiarios.Data", "BlazorAdminGastosDiarios.Data\BlazorAdminGastosDiarios.Data.csproj", "{8ADD6DC9-9CC5-4E6A-9ACF-70D3B56B9B11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAdminGastosDiarios.Data", "BlazorAdminGastosDiarios.Data\BlazorAdminGastosDiarios.Data.csproj", "{8ADD6DC9-9CC5-4E6A-9ACF-70D3B56B9B11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAdminGastosDiarios.API", "BlazorAdminGastosDiarios.API\BlazorAdminGastosDiarios.API.csproj", "{F6B5106E-5B8A-4AE2-A204-D5015448138D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAdminGastosDiarios.API", "BlazorAdminGastosDiarios.API\BlazorAdminGastosDiarios.API.csproj", "{F6B5106E-5B8A-4AE2-A204-D5015448138D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
