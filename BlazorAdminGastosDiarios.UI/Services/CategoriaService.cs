@@ -34,7 +34,7 @@ namespace BlazorAdminGastosDiarios.UI.Services
 
         public async Task<Categoria?> ObterCategoria(int id)
         {
-            var response = await _httpClient.GetFromJsonAsync<Categoria>($"{_baseAddress} {id}");
+            var response = await _httpClient.GetFromJsonAsync<Categoria>($"{_baseAddress}/{id}");
 
             if (response == null)
             {

@@ -9,6 +9,11 @@
 }
 else
 {
+    <div class="container">
+        <a href="/categoria-detalhe" class="btn btn-primary">Inserir Nova Categoria</a>
+    </div>
+    <br/>
+    <br />
     <table>
         <thead>
             <tr>
@@ -20,6 +25,7 @@ else
             {
                <tr>
                     <td>@categoria.NomeCategoria</td>
+                    <td><a href="/categoria-detalhe/@categoria.IdCategoria" ><i>Edit</i></a></td>
                </tr>
 
             }
