@@ -1,0 +1,41 @@
+﻿@page "/deletar-categoria/{id:int}"
+
+
+<div class="modal" tabindex="-1" style="display:block" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Deletar Categoria</h3>
+            </div>
+            <div class="modal-body">
+                <EditForm Model="@Categoria" OnValidSubmit="ExcluirCategoria">                  
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="NomeCategoria" class="control-label">Categoria Nome</label>
+                                <InputText readonly="readonly"  id="NomeCategoria" class="form-control" @bind-Value="Categoria.NomeCategoria" />
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-6">                           
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-danger" value="Excluir" />
+                                <input type="button" class="btn btn-warning" @onclick=Cancelar value="Cancelar" />
+                            </div>
+                        </div>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
