@@ -1,5 +1,6 @@
 ﻿using BlazorAdminGastosDiarios.Model;
 using BlazorAdminGastosDiarios.UI.Interfaces;
+using System.Text;
 using System.Text.Json;
 
 namespace BlazorAdminGastosDiarios.UI.Services
@@ -31,14 +32,31 @@ namespace BlazorAdminGastosDiarios.UI.Services
             return response;
         }
 
-        public Task<Categoria?> ObterCategoria(int id)
+        public async Task<Categoria?> ObterCategoria(int id)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.GetFromJsonAsync<Categoria>($"{_baseAddress} {id}");
+
+            if (response == null)
+            {
+                throw new ApplicationException("O retorno de categorias é nula.");
+            }
+
+            return response;
         }
 
-        public Task SalvarCategoria(Categoria categoria)
+        public async Task SalvarCategoria(Categoria categoria)
         {
-            throw new NotImplementedException();
+            var categoriaJson = new StringContent(JsonSerializer.Serialize(categoria),
+                Encoding.UTF8, "application/json");
+
+            if(categoria.IdCategoria == 0)
+            {
+               await _httpClient.PostAsync($"{_baseAddress}", categoriaJson);
+            }
+            else
+            {
+              await  _httpClient.PutAsync($"{_baseAddress}", categoriaJson);
+            }
         }
     }
 }
