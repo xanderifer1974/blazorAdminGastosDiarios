@@ -8,7 +8,10 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Categorias
     {
       
         [Inject]
-        public ICategoriaService CategoriaService { get; set; }
+        public ICategoriaService CategoriaService { get; set; } 
+
+        [Inject]
+        public NavigationManager Navigation { get; set; }
 
         [Parameter]
         public int id { get; set; }
@@ -28,12 +31,17 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Categorias
             if(Categoria != null)
             {
                await CategoriaService.SalvarCategoria(Categoria);
+                Navigation.NavigateTo("/categorias");
             }
             else
             {
                 //Implementar Modal
-            }
-            
+            }            
+        }
+
+        public void Cancelar()
+        {
+            Navigation.NavigateTo("/categorias");
         }
     }
 }

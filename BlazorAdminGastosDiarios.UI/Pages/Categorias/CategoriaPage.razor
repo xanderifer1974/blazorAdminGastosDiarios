@@ -11,25 +11,27 @@ else
 {
     <div class="container">
         <a href="/categoria-detalhe" class="btn btn-primary">Inserir Nova Categoria</a>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var categoria in Categorias)
+                {
+                    <tr>
+                        <td>@categoria.NomeCategoria</td>
+                        <td><a href="/categoria-detalhe/@categoria.IdCategoria"><i>Edit</i></a></td>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
     </div>
-    <br/>
-    <br />
-    <table>
-        <thead>
-            <tr>
-                <th>Nome</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(var categoria in Categorias)
-            {
-               <tr>
-                    <td>@categoria.NomeCategoria</td>
-                    <td><a href="/categoria-detalhe/@categoria.IdCategoria" ><i>Edit</i></a></td>
-               </tr>
-
-            }
-
-        </tbody>
-    </table>
+   
+    
 }
