@@ -1,19 +1,27 @@
 ﻿using BlazorAdminGastosDiarios.Model;
+using BlazorAdminGastosDiarios.UI.Interfaces;
+using Microsoft.AspNetCore.Components;
 
 namespace BlazorAdminGastosDiarios.UI.Pages.Categorias
 {
     public partial class CategoriaPage
     {
-        public List<Categoria> Categorias { get; set; }
+        [Inject]
+        public ICategoriaService CategoriaService { get; set; }
+        public IEnumerable<Categoria>? Categorias { get; set; }
 
-        protected override void OnInitialized()
+        public string? Mensagem { get; set; }
+
+        protected  async override Task OnInitializedAsync()
         {
-            Categorias = new List<Categoria>();
-            Categoria categoria1 = new Categoria { IdCategoria = 1, NomeCategoria = "Shopping" };
-            Categoria categoria2 = new Categoria { IdCategoria = 2, NomeCategoria = "Combustível" };
-            Categorias.Add(categoria1);
-            Categorias.Add(categoria2);
-
+            try
+            {
+                Categorias = await CategoriaService.ListarTodasCategorias();
+            }
+            catch (Exception ex)
+            {
+                Mensagem = $" Erro ao carregar lista de categorias : {ex.Message}";
+            }
         }
     }
 }
