@@ -2,15 +2,16 @@
 
 <TabControl>
     <TabTitulo>
-        Titulo
+        <img src="images/@(context.ImageSource).png" />
+        @context.Text
     </TabTitulo>
 
 
     <ChildContent>
-        <TabPage Text="Despesas">
+        <TabPage Text="Despesas" ImageSource="minus_red">
             <h3>Contas negativas aqui</h3>
         </TabPage>
-        <TabPage Text="Receitas">
+        <TabPage Text="Receitas" ImageSource="plus_green">
             <h3>Contas positivas aqui</h3>
         </TabPage>
     </ChildContent>

@@ -13,6 +13,9 @@ namespace BlazorAdminGastosDiarios.UI.Components
         [Parameter]
         public string Text { get; set; }
 
+        [Parameter]
+        public string  ImageSource { get; set; }
+
         protected override Task OnInitializedAsync()
         {
             if(Parent == null)
