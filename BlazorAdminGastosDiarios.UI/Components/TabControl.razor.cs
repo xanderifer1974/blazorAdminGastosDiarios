@@ -8,6 +8,9 @@ namespace BlazorAdminGastosDiarios.UI.Components
         [Parameter]
         public RenderFragment ChildContent { get; set; }
 
+        [Parameter]
+        public RenderFragment<TabPage> TabTitulo { get; set; }
+
         public TabPage ActivePage { get; set; }
 
         public List<TabPage> Pages { get; set; } = new List<TabPage>();

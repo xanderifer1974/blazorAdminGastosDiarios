@@ -6,7 +6,14 @@
             class="btn @GetButtonClass(tabPage)"
             @onclick=@(() => ActivatePage(tabPage))>
 
-            @tabPage.Text
+            @if(TabTitulo != null)
+            {
+                @TabTitulo(tabPage)
+            }else{
+
+                @tabPage.Text
+            }
+            
         </button>
     }
 

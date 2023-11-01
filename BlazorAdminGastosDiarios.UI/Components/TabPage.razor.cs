@@ -8,7 +8,7 @@ namespace BlazorAdminGastosDiarios.UI.Components
         private TabControl Parent { get; set; }
 
         [Parameter]
-        public RenderFragment ChildContent { get; set; }
+        public RenderFragment ChildContent { get; set; }        
 
         [Parameter]
         public string Text { get; set; }
