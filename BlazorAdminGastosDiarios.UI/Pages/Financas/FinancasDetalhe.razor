@@ -1,9 +1,4 @@
-﻿@page "/financas-detalhe"
-
-
-<h1>Detalhes Transação</h1>
-
-<EditForm Model="@Financa">   
+﻿<EditForm Model="@Financa">   
     <div class="row">
         <div class="col-md-8">
             <div class="form-group">
@@ -31,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label for="tipo-transacao" class="control-label">Tipo de Transação</label>
-                <InputSelect id="tipoTransacao" class="form-control" @bind-Value="Financa.TipoFinanca">
+                <InputSelect disabled="true" id="tipoTransacao" class="form-control" @bind-Value="Financa.TipoFinanca">
                     <option value="@(TipoFinancaEnum.Debito)">Débito</option>
                     <option value="@(TipoFinancaEnum.Credito)">Crédito</option>
                 </InputSelect>

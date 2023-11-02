@@ -9,10 +9,10 @@
 
     <ChildContent>
         <TabPage Text="Despesas" ImageSource="minus_red">
-            <h3>Contas negativas aqui</h3>
+           <FinancasDetalhe TipoFinanca="@(TipoFinancaEnum.Debito)"></FinancasDetalhe>
         </TabPage>
         <TabPage Text="Receitas" ImageSource="plus_green">
-            <h3>Contas positivas aqui</h3>
+            <FinancasDetalhe TipoFinanca="@(TipoFinancaEnum.Credito)"></FinancasDetalhe>
         </TabPage>
     </ChildContent>
     
