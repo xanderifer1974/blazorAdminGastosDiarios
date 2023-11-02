@@ -6,6 +6,6 @@ namespace BlazorAdminGastosDiarios.Model
     {
         public int IdCategoria { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage ="O nome da categoria é obrigatório.")]
-        public string NomeCategoria { get; set; }
+        public string? NomeCategoria { get; set; }
     }
 }

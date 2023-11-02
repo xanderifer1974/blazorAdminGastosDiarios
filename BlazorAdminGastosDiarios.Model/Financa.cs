@@ -4,7 +4,7 @@ namespace BlazorAdminGastosDiarios.Model
 {
     public class Financa
     {
-        public int IdFinaca { get; set; }
+        public int IdFinanca { get; set; }
         public string? Descricao { get; set; }
         public decimal Valor { get; set; }
         public int IdCategoria { get; set; }
