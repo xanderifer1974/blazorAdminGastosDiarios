@@ -1,17 +1,21 @@
-﻿<EditForm Model="@Financa">   
+﻿<EditForm Model="@Financa">  
+    <DataAnnotationsValidator />
     <div class="row">
         <div class="col-md-8">
             <div class="form-group">
                 <label for="NomeFinanca" class="control-label">Nome Transação</label>
-                <InputText id="NomeFinanca" class="form-control" @bind-Value="Financa.Descricao" />              
+                <InputText id="NomeFinanca" class="form-control" @bind-Value="Financa.Descricao" />
+                <ValidationMessage For="@(() => Financa.Descricao)" />
             </div>
             <div class="form-group">
                 <label for="Valor" class="control-label">Valor</label>
                 <InputNumber id="valor-transacao" class="form-control" @bind-Value="Financa.Valor" />
+                <ValidationMessage For="@(() => Financa.Valor)" />
             </div>
             <div class="form-group">
                 <label for="data-transacao" class="control-label">Data Transação</label>
                 <InputDate id="data-transacao" class="form-control" @bind-Value="Financa.DataFinanca" />
+                <ValidationMessage For="@(() => Financa.DataFinanca)" />
             </div>
             <div class="form-group">
                 <label for="categoria" class="control-label">Categoria</label>
@@ -23,6 +27,7 @@
                     }
 
                 </InputSelect>
+                <ValidationMessage For="@(() => Financa.IdCategoria)" />
             </div>
             <div class="form-group">
                 <label for="tipo-transacao" class="control-label">Tipo de Transação</label>
