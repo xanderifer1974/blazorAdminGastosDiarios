@@ -19,9 +19,18 @@ namespace BlazorAdminGastosDiarios.Data.Repositories
             return new SqlConnection(_connectionString.ConnectionString);
         }
 
-        public Task<bool> AtualizarDetalheFinanca(Financa financa)
+        public async Task<bool> AtualizarDetalheFinanca(Financa financa)
         {
-            throw new NotImplementedException();
+            var db = dbConection();
+            var sql = @" UPDATE Financa
+                          SET Descricao = @Descricao, Valor = @Valor, IdCategoria = @IdCategoria,
+                              TipoFinanca = @TipoFinanca, DataFinanca = @DataFinanca
+                              WHERE IdFinanca = @IdFinanca ";
+            
+            var result = await db.ExecuteAsync(sql,
+                new { financa.Descricao, financa.Valor, financa.IdCategoria, financa.TipoFinanca, financa.DataFinanca });
+
+            return result > 0;
         }
 
         public async Task<bool> DeletarDetalheFinanca(int id)
@@ -35,9 +44,15 @@ namespace BlazorAdminGastosDiarios.Data.Repositories
             return resultado > 0;
         }
 
-        public Task<bool> InserirDetalheFinanca(Financa financa)
+        public async Task<bool> InserirDetalheFinanca(Financa financa)
         {
-            throw new NotImplementedException();
+            var db = dbConection();
+            var sql = @" INSERT into Financa (Descricao, Valor, IdCategoria,TipoFinanca,DataFinanca)
+                         VALUES (@Descricao, @Valor, @IdCategoria,@TipoFinanca,@DataFinanca) ";
+            var result = await db.ExecuteAsync(sql,
+                new { financa.Descricao, financa.Valor, financa.IdCategoria, financa.TipoFinanca, financa.DataFinanca });
+            
+            return result > 0;
         }
 
         public async Task<IEnumerable<Financa>> ListarTodasFinancas()
@@ -56,13 +71,16 @@ namespace BlazorAdminGastosDiarios.Data.Repositories
                 }), new { }, splitOn:"IdCategoria");
 
             return result;
-        }
+        }        
 
-        //Parei no vídeo 43 - 13:59
-
-        public Task<Financa> ObterDetalheFinanca(int id)
+        public async Task<Financa?> ObterDetalheFinanca(int id)
         {
-            throw new NotImplementedException();
+            var db = dbConection();
+            var sql = @"SELECT IdFinanca, Descricao, Valor, IdCategoria, TipoFinanca, DataFinanca
+                        FROM Financa
+                        WHERE IdFinanca =@IdFinanca";
+
+            return await db.QueryFirstOrDefaultAsync<Financa>(sql, new { IdFinanca = id });
         }
     }
 }
