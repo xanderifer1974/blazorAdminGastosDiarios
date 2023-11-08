@@ -28,7 +28,7 @@ namespace BlazorAdminGastosDiarios.Data.Repositories
                               WHERE IdFinanca = @IdFinanca ";
             
             var result = await db.ExecuteAsync(sql,
-                new { financa.Descricao, financa.Valor, financa.IdCategoria, financa.TipoFinanca, financa.DataFinanca });
+                new { financa.Descricao, financa.Valor, financa.IdCategoria, financa.TipoFinanca, financa.DataFinanca, financa.IdFinanca });
 
             return result > 0;
         }

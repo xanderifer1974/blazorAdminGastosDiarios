@@ -1,6 +1,7 @@
 ﻿using BlazorAdminGastosDiarios.Data.Repositories;
 using BlazorAdminGastosDiarios.Data.Repositories.Interfaces;
 using BlazorAdminGastosDiarios.Model;
+using BlazorAdminGastosDiarios.Model.Enum;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorAdminGastosDiarios.API.Controllers
@@ -43,7 +44,16 @@ namespace BlazorAdminGastosDiarios.API.Controllers
             {
                 ModelState.AddModelError("NomeFinanca", "O nome da finança deve estar preenchido");
             }
-           
+
+            if(financa.Valor < 0 && financa.TipoFinanca == TipoFinancaEnum.Credito)
+            {
+                ModelState.AddModelError("Valor Crédito", "O valor não deve ser negativo para crédito");
+            }
+
+            if (financa.Valor > 0 && financa.TipoFinanca == TipoFinancaEnum.Debito)
+            {
+                ModelState.AddModelError("Valor Débito", "O valor não deve ser positivo para débito");
+            }     
 
 
             if (!ModelState.IsValid)
@@ -54,6 +64,53 @@ namespace BlazorAdminGastosDiarios.API.Controllers
             return Created("inserido", inserido);
         }
 
-        //Parei no video 44, 7:36
+        [HttpPut]
+        public async Task<IActionResult> AtualizarDetalheFinanca([FromBody] Financa financa)
+        {
+            if (financa == null)
+                return BadRequest();
+
+            if (financa.Descricao.Trim() == string.Empty)
+            {
+                ModelState.AddModelError("NomeFinanca", "O nome da finança deve estar preenchido");
+            }
+
+            if (financa.Valor < 0 && financa.TipoFinanca == TipoFinancaEnum.Credito)
+            {
+                ModelState.AddModelError("Valor Crédito", "O valor não deve ser negativo para crédito");
+            }
+
+            if (financa.Valor > 0 && financa.TipoFinanca == TipoFinancaEnum.Debito)
+            {
+                ModelState.AddModelError("Valor Débito", "O valor não deve ser positivo para débito");
+            }
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var inserido = await _financaRepository.AtualizarDetalheFinanca(financa).ConfigureAwait(false);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletarFinanca(int id)
+        {
+            if (id == 0)
+                return BadRequest();
+
+            var financa = await _financaRepository.ObterDetalheFinanca(id).ConfigureAwait(false);
+
+            if (financa != null)
+            {
+                await _financaRepository.DeletarDetalheFinanca(id).ConfigureAwait(false);
+                return NoContent();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
     }
 }
