@@ -1,6 +1,5 @@
 using BlazorAdminGastosDiarios.UI.Interfaces;
 using BlazorAdminGastosDiarios.UI.Services;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorAdminGastosDiarios.UI
 {
@@ -15,6 +14,10 @@ namespace BlazorAdminGastosDiarios.UI
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });
             builder.Services.AddHttpClient<ICategoriaService, CategoriaService>(                             
+
+                client => { client.BaseAddress = new Uri(urlApi); });
+
+            builder.Services.AddHttpClient<IFinancaService, FinancaService>(
 
                 client => { client.BaseAddress = new Uri(urlApi); });
 
