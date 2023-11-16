@@ -1,0 +1,34 @@
+﻿<h3>Histórico de Finanças</h3>
+
+<p>@Mensagem</p>
+
+@if(Financas == null)
+{
+    <p><em>Carregando...</em></p>
+}
+else
+{
+    <table class="table table-bordered table-light table-hover">
+
+        <thead>
+            <th>Finança</th>
+            <th>Valor</th>
+            <th>Categoria</th>
+            <th>Data</th>
+        </thead>
+        <tbody>
+            @foreach(var item in Financas)
+            {
+                <tr>
+                    <td>@item.Descricao</td>
+                    <td style="@GetTextColor(item.IdFinanca)">@item.Valor</td>
+                    <td>@item.Categoria.NomeCategoria</td>
+                    <td>@item.DataFinanca.ToString("dd-MM-yyyy")</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}
+
+
