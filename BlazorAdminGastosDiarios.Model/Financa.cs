@@ -25,6 +25,28 @@ namespace BlazorAdminGastosDiarios.Model
         [FinacaDataTransacaoValidator(DiasNoFuturo =30)]
         public DateTime DataFinanca { get; set; }
 
+        public event Action? OnSelectedFinancaChanged;
+
+
+        public void SelectedFinancaChange(Financa financa)
+        {
+            IdFinanca = financa.IdFinanca;
+            Descricao = financa.Descricao;
+            Valor = financa.Valor; 
+            IdCategoria = financa.IdCategoria;
+            TipoFinanca = financa.TipoFinanca;
+            DataFinanca = financa.DataFinanca;
+
+            NotifySelectedFinancaChanged();
+        }
+
+        private void NotifySelectedFinancaChanged()
+        {
+            OnSelectedFinancaChanged?.Invoke();
+        }
+
+        #region validate
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var errors = new List<ValidationResult>();
@@ -40,5 +62,7 @@ namespace BlazorAdminGastosDiarios.Model
 
             return errors;
         }
+
+        #endregion
     }
 }
