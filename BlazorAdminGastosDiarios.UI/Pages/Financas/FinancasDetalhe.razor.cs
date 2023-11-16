@@ -9,6 +9,9 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Financas
     {
         [Inject]
         public ICategoriaService CategoriaService { get; set; }
+
+        [Inject]
+        public IFinancaService FinancaService { get; set; }
         public Financa Financa { get; set; } = new Financa();
         public IEnumerable<Categoria> Categorias { get; set; } = new List<Categoria>();
 
@@ -23,5 +26,14 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Financas
             Financa.TipoFinanca = TipoFinanca;
 
         }
+
+        protected async Task SalvarFinanca()
+        {
+            await FinancaService.SalvarDetalheFinança(Financa);
+        }
+
+
+
+
     }
 }
