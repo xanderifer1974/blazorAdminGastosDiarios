@@ -14,38 +14,45 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Financas
         public IFinancaService FinancaService { get; set; }
 
         [CascadingParameter]
-        protected Financa Financa { get; set; } 
+        protected Financa Financa { get; set; }
 
         public IEnumerable<Categoria> Categorias { get; set; } = new List<Categoria>();
 
         [Parameter]
         public TipoFinancaEnum TipoFinanca { get; set; }
 
-        protected  async override Task OnInitializedAsync()
+        protected async override Task OnInitializedAsync()
         {
             Categorias = await CategoriaService.ListarTodasCategorias();
 
-            if(Financa.IdFinanca == 0)
+            if (Financa.IdFinanca == 0)
             {
                 Financa.IdCategoria = Categorias.FirstOrDefault().IdCategoria;
                 Financa.TipoFinanca = TipoFinanca;
             }
-           
+
 
         }
 
         protected async Task SalvarFinanca()
         {
             await FinancaService.SalvarDetalheFinança(Financa);
+            ClearFinanca();
+            Financa.SelectedFinancaChanged(Financa);
         }
 
         protected string GetCancelButtonStyle()
         {
-            return Financa.IdFinanca ==0 ?"display:none":"";
+            return Financa.IdFinanca == 0 ? "display:none" : "";
         }
 
 
         public void Cancel()
+        {
+           ClearFinanca();
+        }
+
+        private void ClearFinanca()
         {
             Financa.IdFinanca = 0;
             Financa.Descricao = "";
@@ -54,8 +61,6 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Financas
             Financa.IdCategoria = Categorias.FirstOrDefault().IdCategoria;
             Financa.TipoFinanca = TipoFinanca;
         }
-
-        //Parei na aula 49 - 5:22
 
     }
 }
