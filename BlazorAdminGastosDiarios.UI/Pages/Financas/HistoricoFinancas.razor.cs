@@ -10,9 +10,19 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Financas
         [Inject]
         public IFinancaService? FinancaServico { get; set; }
 
-        public IEnumerable<Financa>? Financas { get; set; }
+        public IEnumerable<Financa> Financas { get; set; }
+
+        [CascadingParameter]
+        public Financa? SelectedFinanca { get; set; }
 
         public string? Mensagem { get; set; }
+
+        protected async Task SelectedFinancaChange(int financaId)
+        {
+            var financa =  await FinancaServico.ObterDetalheFinanca(financaId);
+
+            SelectedFinanca.SelectedFinancaChanged(financa);
+        }
 
 
         protected override async Task OnParametersSetAsync()

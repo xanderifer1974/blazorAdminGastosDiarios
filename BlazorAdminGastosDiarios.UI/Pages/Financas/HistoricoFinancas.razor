@@ -19,7 +19,7 @@ else
         <tbody>
             @foreach(var item in Financas)
             {
-                <tr>
+                <tr @onclick="@(() => SelectedFinancaChange(item.IdFinanca))">
                     <td>@item.Descricao</td>
                     <td style="@GetTextColor(item.IdFinanca)">@item.Valor</td>
                     <td>@item.Categoria.NomeCategoria</td>

@@ -12,7 +12,10 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Financas
 
         [Inject]
         public IFinancaService FinancaService { get; set; }
-        public Financa Financa { get; set; } = new Financa();
+
+        [CascadingParameter]
+        protected Financa Financa { get; set; } 
+
         public IEnumerable<Categoria> Categorias { get; set; } = new List<Categoria>();
 
         [Parameter]
@@ -22,8 +25,12 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Financas
         {
             Categorias = await CategoriaService.ListarTodasCategorias();
 
-            Financa.IdCategoria = Categorias.FirstOrDefault().IdCategoria;
-            Financa.TipoFinanca = TipoFinanca;
+            if(Financa.IdFinanca == 0)
+            {
+                Financa.IdCategoria = Categorias.FirstOrDefault().IdCategoria;
+                Financa.TipoFinanca = TipoFinanca;
+            }
+           
 
         }
 

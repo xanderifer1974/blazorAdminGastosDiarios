@@ -28,7 +28,7 @@ namespace BlazorAdminGastosDiarios.Model
         public event Action? OnSelectedFinancaChanged;
 
 
-        public void SelectedFinancaChange(Financa financa)
+        public void SelectedFinancaChanged(Financa financa)
         {
             IdFinanca = financa.IdFinanca;
             Descricao = financa.Descricao;
@@ -40,6 +40,8 @@ namespace BlazorAdminGastosDiarios.Model
             NotifySelectedFinancaChanged();
         }
 
+
+        //Parei na aula 48
         private void NotifySelectedFinancaChanged()
         {
             OnSelectedFinancaChanged?.Invoke();
