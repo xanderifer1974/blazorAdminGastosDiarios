@@ -39,8 +39,23 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Financas
             await FinancaService.SalvarDetalheFinança(Financa);
         }
 
+        protected string GetCancelButtonStyle()
+        {
+            return Financa.IdFinanca ==0 ?"display:none":"";
+        }
 
 
+        public void Cancel()
+        {
+            Financa.IdFinanca = 0;
+            Financa.Descricao = "";
+            Financa.Valor = 0;
+            Financa.DataFinanca = DateTime.MinValue;
+            Financa.IdCategoria = Categorias.FirstOrDefault().IdCategoria;
+            Financa.TipoFinanca = TipoFinanca;
+        }
+
+        //Parei na aula 49 - 5:22
 
     }
 }

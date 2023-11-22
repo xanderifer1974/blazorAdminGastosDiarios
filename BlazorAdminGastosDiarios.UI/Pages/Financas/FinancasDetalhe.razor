@@ -43,8 +43,8 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <input type="submit" class="btn btn-success" value="Salvar" />
-                <input type="button" class="btn btn-secondary"  value="Cancelar" />
+                <input type="submit" class="btn btn-success" value="@(Financa.IdFinanca ==0? "Salvar":"Atualizar")" />
+                <input type="button" class="btn btn-secondary" value="Cancelar" style="@GetCancelButtonStyle()"  @onclick="Cancel"/>
             </div>
         </div>
     </div>
