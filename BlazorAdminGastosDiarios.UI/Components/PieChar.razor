@@ -1,0 +1,15 @@
+﻿@page "/chart"
+
+<h3>PieChar</h3>
+
+<p>@Mensagem</p>
+
+@if(Financas == null)
+{
+    <p><em>Carregando...</em></p>
+}
+else
+{
+    <ChartJsPieChart @ref="_pieChartJS" Config="_Config" Width="600" Height="300"></ChartJsPieChart>
+}
+
