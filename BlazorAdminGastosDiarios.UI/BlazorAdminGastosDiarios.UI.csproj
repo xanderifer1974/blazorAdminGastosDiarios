@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="ChartJs.Blazor" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BlazorAdminGastosDiarios.Model\BlazorAdminGastosDiarios.Model.csproj" />
   </ItemGroup>
 
