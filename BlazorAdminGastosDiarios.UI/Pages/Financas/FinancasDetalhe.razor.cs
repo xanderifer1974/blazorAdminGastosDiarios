@@ -49,7 +49,7 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Financas
 
         public void Cancel()
         {
-           ClearFinanca();
+            ClearFinanca();
         }
 
         private void ClearFinanca()
@@ -60,6 +60,13 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Financas
             Financa.DataFinanca = DateTime.MinValue;
             Financa.IdCategoria = Categorias.FirstOrDefault().IdCategoria;
             Financa.TipoFinanca = TipoFinanca;
+        }
+
+        protected async Task DeleteFinanca()
+        {
+            await FinancaService.DeletarDetalheFinanca(Financa.IdFinanca);
+            Financa.SelectedFinancaChanged(Financa);
+            ClearFinanca();
         }
 
     }
