@@ -2,6 +2,7 @@
 using BlazorAdminGastosDiarios.Model.Enum;
 using BlazorAdminGastosDiarios.UI.Interfaces;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace BlazorAdminGastosDiarios.UI.Pages.Financas
 {
@@ -12,6 +13,9 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Financas
 
         [Inject]
         public IFinancaService FinancaService { get; set; }
+
+        [Inject]
+        public IJSRuntime jSRuntime { get; set; }
 
         [CascadingParameter]
         protected Financa Financa { get; set; }
@@ -64,9 +68,15 @@ namespace BlazorAdminGastosDiarios.UI.Pages.Financas
 
         protected async Task DeleteFinanca()
         {
-            await FinancaService.DeletarDetalheFinanca(Financa.IdFinanca);
-            Financa.SelectedFinancaChanged(Financa);
-            ClearFinanca();
+            bool confirmed = await jSRuntime.InvokeAsync<bool>("confirm", "Confirmar Exclusão?");
+
+            if (confirmed)
+            {
+                await FinancaService.DeletarDetalheFinanca(Financa.IdFinanca);
+                Financa.SelectedFinancaChanged(Financa);
+                ClearFinanca();
+            }
+            
         }
 
     }
