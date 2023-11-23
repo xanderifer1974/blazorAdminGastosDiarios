@@ -1,8 +1,4 @@
-﻿@page "/chart"
-
-<h3>PieChar</h3>
-
-<p>@Mensagem</p>
+﻿<p>@Mensagem</p>
 
 @if(Financas == null)
 {
@@ -11,5 +7,30 @@
 else
 {
     <ChartJsPieChart @ref="_pieChartJS" Config="_Config" Width="600" Height="300"></ChartJsPieChart>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-1">
+                <span>Crédito</span>
+            </div>
+             <div class="col-2">
+                <span>Débito</span>
+            </div>
+            <div class="col-3">
+                <span>Total</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                <span style="font-weight:700;color:green">@string.Format($"R${GetTotalReceitas().ToString()}")</span>
+            </div>
+            <div class="col-2">
+                <span style="font-weight:700;color:red">@string.Format($"R${GetTotalDespesas().ToString()}")</span>
+            </div>
+            <div class="col-3">
+                <span style="font-weight:700;color:@GetTotalColor()">@string.Format($"R${GetTotal().ToString()}")</span>
+            </div>
+        </div>
+    </div>
 }
 

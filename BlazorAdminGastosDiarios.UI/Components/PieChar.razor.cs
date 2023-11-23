@@ -1,4 +1,5 @@
 ﻿using BlazorAdminGastosDiarios.Model;
+using BlazorAdminGastosDiarios.Model.Enum;
 using BlazorAdminGastosDiarios.UI.Interfaces;
 using ChartJs.Blazor.ChartJS.Common.Properties;
 using ChartJs.Blazor.ChartJS.PieChart;
@@ -67,6 +68,40 @@ namespace BlazorAdminGastosDiarios.UI.Components
 
             _Config.Data.Datasets.Add(pieSet);
         }
+
+        protected decimal GetTotalDespesas()
+        {
+            return Financas
+                   .Where(c => c.TipoFinanca == TipoFinancaEnum.Debito)
+                   .GroupBy(i => 1)
+                   .Select(g => new
+                   {
+                       Valor = g.Sum(i => i.Valor)
+                   }).FirstOrDefault().Valor;
+        }
+
+        protected decimal GetTotalReceitas()
+        {
+            return Financas
+                   .Where(c => c.TipoFinanca == TipoFinancaEnum.Credito)
+                   .GroupBy(i => 1)
+                   .Select(g => new
+                   {
+                       Valor = g.Sum(i => i.Valor)
+                   }).FirstOrDefault().Valor;
+        }
+
+        protected decimal GetTotal()
+        {
+            return GetTotalReceitas() + GetTotalDespesas();
+        }
+
+        public string GetTotalColor()
+        {
+            string color = GetTotal() > 0 ? "green" : "red";
+            return color;
+        }
+
 
     }
 }
