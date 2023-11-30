@@ -62,3 +62,8 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
+.Menu-NavBar {
+    width: 350px !important;
+    position: absolute;
+}

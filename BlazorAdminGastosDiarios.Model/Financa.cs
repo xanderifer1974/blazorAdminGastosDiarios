@@ -22,7 +22,7 @@ namespace BlazorAdminGastosDiarios.Model
         public TipoFinancaEnum TipoFinanca { get; set; }
 
         [Required(ErrorMessage ="A data deve ser informada.")]
-        [FinacaDataTransacaoValidator(DiasNoFuturo =30)]
+        [FinacaDataTransacaoValidator(DiasNoFuturo =30)]       
         public DateTime DataFinanca { get; set; }
 
         public event Action? OnSelectedFinancaChanged;
@@ -39,9 +39,7 @@ namespace BlazorAdminGastosDiarios.Model
 
             NotifySelectedFinancaChanged();
         }
-
-
-        //Parei na aula 48
+        
         private void NotifySelectedFinancaChanged()
         {
             OnSelectedFinancaChanged?.Invoke();
